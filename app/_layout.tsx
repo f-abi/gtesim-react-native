@@ -6,9 +6,11 @@ import 'react-native-reanimated';
 import "../global.css"
 
 import { useColorScheme } from '@/hooks/useColorScheme';
+import { useAppStore } from '@/stores/appStore';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
+  const appStore = useAppStore()
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
@@ -18,11 +20,12 @@ export default function RootLayout() {
     return null;
   }
 
+  appStore.initLanguage()
+
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="(pages)" options={{ headerShown: false }} />
         <Stack.Screen name="+not-found" />
       </Stack>
       <StatusBar style="auto" />

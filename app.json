@@ -35,6 +35,23 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-localization",
+        {
+          "supportedLocales": {
+            "ios": [
+              "en",
+              "zh",
+              "ko"
+            ],
+            "android": [
+              "en",
+              "zh",
+              "ko"
+            ]
+          }
+        }
       ]
     ],
     "experiments": {

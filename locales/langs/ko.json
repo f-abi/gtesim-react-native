@@ -1,0 +1,13 @@
+{
+  "auth": {
+    "login": "韩语",
+    "register": "韩语",
+    "codeLogin": "韩语",
+    "qrcodeLogin": "韩语",
+    "forgetPassword": "韩语"
+  },
+  "home": {
+    "title": "韩语",
+    "analytics": "韩语"
+  }
+}

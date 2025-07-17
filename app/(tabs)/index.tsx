@@ -7,6 +7,8 @@ import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
 import { Link } from 'expo-router';
 import { useAppStore } from '@/stores/appStore';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { i18n } from '@/utils/i18n';
 
 export default function HomeScreen() {
 
@@ -57,24 +59,54 @@ export default function HomeScreen() {
         </ThemedText>
       </ThemedView>
       <View>
+        <Text className='dark:text-white'>{i18n.t('auth.codeLogin')}</Text>
+      </View>
+      <View>
         <Text className='dark:text-white'>{appStore.language}</Text>
       </View>
-      <Button title='set'
+      <Button title='ko'
         onPress={() => {
-          appStore.setLanguage('en-US')
+          appStore.setLanguage('ko')
         }}
       />
-      <Button title='null'
+      <Button title='en'
+        onPress={() => {
+          appStore.setLanguage('en')
+        }}
+      />
+      <Button title='zh'
+        onPress={() => {
+          appStore.setLanguage('zh')
+        }}
+      />
+      <Button title='de'
+        onPress={() => {
+          appStore.setLanguage('default')
+        }}
+      />
+      <Button title='allKey'
+        onPress={() => {
+          AsyncStorage.getAllKeys().then((_) => {
+            console.log(_)
+            _.map((__) => {
+              AsyncStorage.getItem(__).then((___) => {
+                console.log(___)
+              })
+            })
+          })
+        }}
+      />
+      <Button title='COLOR: null'
         onPress={() => {
           Appearance.setColorScheme(null)
         }}
       />
-      <Button title='light'
+      <Button title='COLOR: light'
         onPress={() => {
           Appearance.setColorScheme('light')
         }}
       />
-      <Button title='dark'
+      <Button title='COLOR: dark'
         onPress={() => {
           Appearance.setColorScheme('dark')
         }}
