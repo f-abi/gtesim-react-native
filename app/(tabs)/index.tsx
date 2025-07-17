@@ -52,7 +52,7 @@ export default function HomeScreen() {
           <ThemedText type="defaultSemiBold">app-example</ThemedText>.
         </ThemedText>
       </ThemedView>
-      <View><Link href={'/demo'}>pppp</Link></View>
+      <View><Link href={'/demo'}>setting lang</Link></View>
     </ParallaxScrollView>
   );
 }

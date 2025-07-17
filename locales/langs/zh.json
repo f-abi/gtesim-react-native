@@ -9,9 +9,5 @@
   "home": {
     "title": "首页",
     "analytics": "概览"
-  },
-  "traffic": {
-    "title": "流量业务",
-    "manage": "流量订单管理"
   }
 }
