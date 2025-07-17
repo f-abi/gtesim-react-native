@@ -1,4 +1,9 @@
 {
+  "tailwindCSS.classAttributes": [
+    "class",
+    "className",
+    "headerClassName"
+  ],
   "i18n-ally.localesPaths": [
     "locales/langs"
   ],
