@@ -8,6 +8,7 @@ module.exports = {
   trailingComma: 'all',
   endOfLine: 'auto',
   htmlWhitespaceSensitivity: 'ignore',
+  plugins: ['prettier-plugin-tailwindcss'],
   overrides: [
     {
       files: '*.json',

@@ -46,10 +46,10 @@ export default function HomeScreen() {
       }
     >
       <View>
-        <Text className="dark:text-white p-2 h-10">{i18n.t('auth.forgetPassword')}</Text>
+        <Text className="dark:text-white">{i18n.t('auth.forgetPassword')}</Text>
       </View>
       <View>
-        <Text className="dark:text-white">{appStore.language}</Text>
+        <Text className="bg-red-300">{appStore.language}</Text>
       </View>
       <Button title="ShopifyHomeData" onPress={handleClick} />
       <Button
