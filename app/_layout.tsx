@@ -7,20 +7,23 @@ import "../global.css"
 
 import { useColorScheme } from '@/hooks/useColorScheme';
 import { useAppStore } from '@/stores/appStore';
+import { useEffect, useRef } from 'react';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
-  const appStore = useAppStore()
+  const appStore = useRef(useAppStore()).current
   const [loaded] = useFonts({
     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
   });
+
+  useEffect(() => {
+    appStore.initLanguage()
+  }, [appStore]);
 
   if (!loaded) {
     // Async font loading only occurs in development.
     return null;
   }
-
-  appStore.initLanguage()
 
   return (
     <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
