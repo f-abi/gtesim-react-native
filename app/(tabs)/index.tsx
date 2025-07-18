@@ -7,31 +7,27 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { i18n } from '@/utils/i18n';
 
 import { shopifyClient } from '@/utils/shopifyClient';
-import { ShopQuery } from '@/types/storefront.generated';
-
-
 
 export default function HomeScreen() {
-
-  const appStore = useAppStore()
+  const appStore = useAppStore();
 
   const handleClick = async () => {
     try {
-      const { data, errors, extensions } = await shopifyClient.request<ShopQuery>(
+      const { data } = await shopifyClient.request(
         `#graphql
-  query Shop {
-    shop {
-      name
-    }
-  }`,
+        query shop {
+          shop{
+            name
+            id
+          }
+        }
+        `,
       );
       console.log(data?.shop.name);
     } catch (err) {
-
-      console.error(err)
+      console.error(err);
     }
-  }
-
+  };
 
   return (
     <ParallaxScrollView
@@ -47,61 +43,68 @@ export default function HomeScreen() {
             position: 'absolute',
           }}
         />
-      }>
+      }
+    >
       <View>
-        <Text className='dark:text-white'>{i18n.t('auth.forgetPassword')}</Text>
+        <Text className="dark:text-white p-2 h-10">{i18n.t('auth.forgetPassword')}</Text>
       </View>
       <View>
-        <Text className='dark:text-white'>{appStore.language}</Text>
+        <Text className="dark:text-white">{appStore.language}</Text>
       </View>
-      <Button title='ShopifyHomeData'
-        onPress={handleClick}
-      />
-      <Button title='ko'
+      <Button title="ShopifyHomeData" onPress={handleClick} />
+      <Button
+        title="ko"
         onPress={() => {
-          appStore.setLanguage('ko')
+          appStore.setLanguage('ko');
         }}
       />
-      <Button title='en'
+      <Button
+        title="en"
         onPress={() => {
-          appStore.setLanguage('en')
+          appStore.setLanguage('en');
         }}
       />
-      <Button title='zh'
+      <Button
+        title="zh"
         onPress={() => {
-          appStore.setLanguage('zh')
+          appStore.setLanguage('zh');
         }}
       />
-      <Button title='de'
+      <Button
+        title="de"
         onPress={() => {
-          appStore.setLanguage('default')
+          appStore.setLanguage('default');
         }}
       />
-      <Button title='allKey'
+      <Button
+        title="allKey"
         onPress={() => {
           AsyncStorage.getAllKeys().then((_) => {
-            console.log(_)
+            console.log(_);
             _.map((__) => {
               AsyncStorage.getItem(__).then((___) => {
-                console.log(___)
-              })
-            })
-          })
+                console.log(___);
+              });
+            });
+          });
         }}
       />
-      <Button title='COLOR: null'
+      <Button
+        title="COLOR: null"
         onPress={() => {
-          Appearance.setColorScheme(null)
+          Appearance.setColorScheme(null);
         }}
       />
-      <Button title='COLOR: light'
+      <Button
+        title="COLOR: light"
         onPress={() => {
-          Appearance.setColorScheme('light')
+          Appearance.setColorScheme('light');
         }}
       />
-      <Button title='COLOR: dark'
+      <Button
+        title="COLOR: dark"
         onPress={() => {
-          Appearance.setColorScheme('dark')
+          Appearance.setColorScheme('dark');
         }}
       />
     </ParallaxScrollView>

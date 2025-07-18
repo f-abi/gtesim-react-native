@@ -12,12 +12,14 @@ interface AppState {
 }
 
 /** 默认回退语言 */
-const defaultLanguage: AppLanguage = 'en'
+const defaultLanguage: AppLanguage = 'en';
 
 /** 获取默认语言 */
 const getDefaultLanguage = (): AppLanguage => {
   const systemLanguage = getLocales()[0]?.languageCode;
-  return systemLanguage && AppLanguageMap.includes(systemLanguage) ? systemLanguage as AppLanguage : defaultLanguage
+  return systemLanguage && AppLanguageMap.includes(systemLanguage)
+    ? (systemLanguage as AppLanguage)
+    : defaultLanguage;
 };
 
 export const useAppStore = create<AppState>()(
@@ -25,17 +27,17 @@ export const useAppStore = create<AppState>()(
     (set, get) => ({
       language: getDefaultLanguage(),
       setLanguage: (language) => {
-        const newLanguage: AppLanguage = language === "default" ? getDefaultLanguage() : language
-        set({ language: newLanguage })
-        get().initLanguage()
+        const newLanguage: AppLanguage = language === 'default' ? getDefaultLanguage() : language;
+        set({ language: newLanguage });
+        get().initLanguage();
       },
       initLanguage: () => {
-        i18n.locale = get().language
-      }
+        i18n.locale = get().language;
+      },
     }),
     {
       name: 'app-storage',
       storage: createJSONStorage(() => AsyncStorage),
-    }
-  )
+    },
+  ),
 );

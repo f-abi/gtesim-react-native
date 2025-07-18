@@ -6,10 +6,10 @@ import type * as StorefrontTypes from './storefront.types';
 export type ShopQueryVariables = StorefrontTypes.Exact<{ [key: string]: never; }>;
 
 
-export type ShopQuery = { shop: Pick<StorefrontTypes.Shop, 'name'> };
+export type ShopQuery = { shop: Pick<StorefrontTypes.Shop, 'name' | 'id'> };
 
 interface GeneratedQueryTypes {
-  "#graphql\n  query Shop {\n    shop {\n      name\n    }\n  }": {return: ShopQuery, variables: ShopQueryVariables},
+  "#graphql\n        query shop {\n          shop{\n            name\n            id\n          }\n        }\n        ": {return: ShopQuery, variables: ShopQueryVariables},
 }
 
 interface GeneratedMutationTypes {

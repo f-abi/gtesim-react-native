@@ -1,26 +1,19 @@
 {
-  "tailwindCSS.classAttributes": [
-    "class",
-    "className",
-    "headerClassName"
-  ],
-  "i18n-ally.localesPaths": [
-    "locales/langs"
-  ],
-  "i18n-ally.enabledParsers": [
-    "json"
-  ],
+  "tailwindCSS.classAttributes": ["class", "className", "headerClassName"],
+  "i18n-ally.localesPaths": ["locales/langs"],
+  "i18n-ally.enabledParsers": ["json"],
   "i18n-ally.sourceLanguage": "zh",
   "i18n-ally.displayLanguage": "zh",
-  "i18n-ally.enabledFrameworks": [
-    "vue",
-    "react",
-  ],
+  "i18n-ally.enabledFrameworks": ["vue", "react"],
+  // 默认格式化工具选择prettier
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  // 保存的时候自动格式化
   "editor.formatOnSave": true,
-  // Auto fix
+  //开启自动修复
   "editor.codeActionsOnSave": {
+    "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit",
-    "source.organizeImports": "never"
+    "source.fixAll.stylelint": "explicit"
   },
   // Silent the stylistic rules in you IDE, but still auto fix them
   "eslint.rules.customizations": [
@@ -103,8 +96,11 @@
   "cSpell.words": [
     "codegen",
     "forwardslash",
+    "gtesim",
     "nativewind",
+    "paperplane",
     "Pressable",
     "qrcode"
   ],
+  "i18n-ally.keystyle": "nested"
 }

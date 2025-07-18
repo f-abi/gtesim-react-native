@@ -1,1 +1,1 @@
-export const AppLanguageMap = ['en', 'zh', 'ko']
+export const AppLanguageMap = ['en', 'zh', 'ko'];
