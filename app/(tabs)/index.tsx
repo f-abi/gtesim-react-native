@@ -11,18 +11,63 @@ import { shopifyClient } from '@/utils/shopifyClient';
 export default function HomeScreen() {
   const appStore = useAppStore();
 
-  const handleClick = async () => {
+  const getProductList = async () => {
     try {
       const { data } = await shopifyClient.request(
-        `#graphql
+        /* GraphQL */ `
+          #graphql
+          query getProducts($first: Int!, $country: CountryCode, $language: LanguageCode)
+          @inContext(country: $country, language: $language) {
+            products(first: $first) {
+              edges {
+                node {
+                  id
+                  title # 返回翻译后的标题（如果配置了多语言）
+                  description # 返回翻译后的描述
+                  featuredImage {
+                    url
+                  }
+                  variants(first: 1) {
+                    edges {
+                      node {
+                        price {
+                          # 返回该国家的价格
+                          amount
+                          currencyCode
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `,
+        {
+          variables: {
+            first: 10,
+            language: 'ZH',
+            country: 'US',
+          },
+        },
+      );
+      console.log(data?.products.edges);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleClick = async () => {
+    try {
+      const { data } = await shopifyClient.request(/* GraphQL */ `
+        #graphql
         query shop {
-          shop{
+          shop {
             name
             id
           }
         }
-        `,
-      );
+      `);
       console.log(data?.shop.name);
     } catch (err) {
       console.error(err);
@@ -52,6 +97,7 @@ export default function HomeScreen() {
         <Text className="bg-red-300">{appStore.language}</Text>
       </View>
       <Button title="ShopifyHomeData" onPress={handleClick} />
+      <Button title="获取产品" onPress={getProductList} />
       <Button
         title="ko"
         onPress={() => {

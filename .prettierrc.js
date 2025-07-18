@@ -16,5 +16,11 @@ module.exports = {
         trailingComma: 'none',
       },
     },
+    {
+      files: '*.{graphql,gql}',
+      options: {
+        parser: 'graphql',
+      },
+    },
   ],
 };
