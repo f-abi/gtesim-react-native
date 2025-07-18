@@ -9,6 +9,8 @@ import { useColorScheme } from '@/hooks/useColorScheme';
 import { useAppStore } from '@/stores/appStore';
 import { useEffect, useRef } from 'react';
 
+import 'react-native-url-polyfill/auto';
+
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const appStore = useRef(useAppStore()).current

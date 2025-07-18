@@ -1,3 +1,5 @@
 ```shell
-npx expo install expo-secure-store
+pnpm i @shopify/storefront-api-client 
+pnpm i react-native-url-polyfill
+pnpm i --save-dev @shopify/api-codegen-preset
 ```
