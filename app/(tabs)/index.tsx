@@ -46,8 +46,6 @@ export default function HomeScreen() {
         {
           variables: {
             first: 10,
-            language: 'ZH',
-            country: 'US',
           },
         },
       );

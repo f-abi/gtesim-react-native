@@ -100,7 +100,8 @@
     "nativewind",
     "paperplane",
     "Pressable",
-    "qrcode"
+    "qrcode",
+    "simcard"
   ],
   "i18n-ally.keystyle": "nested"
 }
