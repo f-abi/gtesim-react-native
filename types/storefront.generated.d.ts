@@ -3,6 +3,16 @@
 /* eslint-disable */
 import type * as StorefrontTypes from './storefront.types';
 
+export type GetCollectionsQueryVariables = StorefrontTypes.Exact<{
+  first: StorefrontTypes.Scalars['Int']['input'];
+}>;
+
+
+export type GetCollectionsQuery = { collections: { edges: Array<{ node: (
+        Pick<StorefrontTypes.Collection, 'id' | 'title' | 'handle' | 'description'>
+        & { image?: StorefrontTypes.Maybe<Pick<StorefrontTypes.Image, 'url'>> }
+      ) }> } };
+
 export type GetProductsQueryVariables = StorefrontTypes.Exact<{
   first: StorefrontTypes.Scalars['Int']['input'];
   country?: StorefrontTypes.InputMaybe<StorefrontTypes.CountryCode>;
@@ -21,6 +31,7 @@ export type ShopQueryVariables = StorefrontTypes.Exact<{ [key: string]: never; }
 export type ShopQuery = { shop: Pick<StorefrontTypes.Shop, 'name' | 'id'> };
 
 interface GeneratedQueryTypes {
+  "\n          #graphql\n          query getCollections($first: Int!) {\n            collections(first: $first) {\n              edges {\n                node {\n                  id\n                  title\n                  handle\n                  description\n                  image {\n                    url\n                  }\n                }\n              }\n            }\n          }\n        ": {return: GetCollectionsQuery, variables: GetCollectionsQueryVariables},
   "\n          #graphql\n          query getProducts($first: Int!, $country: CountryCode, $language: LanguageCode)\n          @inContext(country: $country, language: $language) {\n            products(first: $first) {\n              edges {\n                node {\n                  id\n                  title # 返回翻译后的标题（如果配置了多语言）\n                  description # 返回翻译后的描述\n                  featuredImage {\n                    url\n                  }\n                  variants(first: 1) {\n                    edges {\n                      node {\n                        price {\n                          # 返回该国家的价格\n                          amount\n                          currencyCode\n                        }\n                      }\n                    }\n                  }\n                }\n              }\n            }\n          }\n        ": {return: GetProductsQuery, variables: GetProductsQueryVariables},
   "\n        #graphql\n        query shop {\n          shop {\n            name\n            id\n          }\n        }\n      ": {return: ShopQuery, variables: ShopQueryVariables},
 }
