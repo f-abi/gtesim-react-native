@@ -8,16 +8,18 @@ import { FlashList } from '@shopify/flash-list';
 import { BlurView } from 'expo-blur';
 import { Colors } from '@/constants/Colors';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 type ListData = GetCollectionsQuery['collections']['edges'];
 
 export default function HomeScreen() {
-  const topBarHeight = Constants.statusBarHeight + 50;
+  const headerHeight = 50;
+  const topBarHeight = Constants.statusBarHeight + headerHeight;
   const tabBarHeight = useBottomTabBarHeight();
+  const insets = useSafeAreaInsets();
   const colorScheme = Appearance.getColorScheme();
   const [refreshing, setRefreshing] = useState(false);
   const [data, setData] = useState<ListData>();
-
   const getProductList = async () => {
     try {
       setRefreshing(true);
@@ -43,7 +45,7 @@ export default function HomeScreen() {
         `,
         {
           variables: {
-            first: 100, // 最多查询100个系列（根据需求调整）
+            first: 100,
           },
         },
       );
@@ -63,6 +65,7 @@ export default function HomeScreen() {
     <>
       <BlurView
         tint="systemChromeMaterial"
+        experimentalBlurMethod="dimezisBlurView"
         style={[
           StyleSheet.absoluteFill,
           {
@@ -76,10 +79,11 @@ export default function HomeScreen() {
         <View
           className="flex-1 items-center justify-center"
           style={{
+            height: headerHeight,
             paddingTop: Constants.statusBarHeight,
           }}
         >
-          <Text className="text-2xl font-semibold">GTESIM</Text>
+          <Text className="text-2xl font-semibold dark:text-white">GTESIM</Text>
         </View>
       </BlurView>
       <FlashList
@@ -93,16 +97,14 @@ export default function HomeScreen() {
             progressViewOffset={topBarHeight}
           />
         }
-        contentInset={{ top: topBarHeight, bottom: tabBarHeight }}
-        scrollIndicatorInsets={{
-          top: topBarHeight,
-          bottom: tabBarHeight,
-        }}
         contentContainerStyle={{
           paddingTop: topBarHeight,
           paddingBottom: tabBarHeight,
         }}
-        progressViewOffset={topBarHeight}
+        scrollIndicatorInsets={{
+          top: headerHeight,
+          bottom: tabBarHeight - insets.bottom,
+        }}
         renderItem={({ item }) => (
           <View className="px-4 py-2">
             <View className="flex-row items-center justify-between rounded-[12] bg-white p-4 ">
