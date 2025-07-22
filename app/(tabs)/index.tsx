@@ -7,8 +7,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { i18n } from '@/utils/i18n';
 
 import { shopifyClient } from '@/utils/shopifyClient';
+import { AlertDialog, XStack, YStack, Button as TButton } from 'tamagui';
+import { useState } from 'react';
 
 export default function HomeScreen() {
+  const [open, setOpen] = useState(false);
   const appStore = useAppStore();
 
   const getProductList = async () => {
@@ -88,11 +91,63 @@ export default function HomeScreen() {
         />
       }
     >
-      <View>
-        <Text className="dark:text-white">{i18n.t('auth.forgetPassword')}</Text>
-      </View>
+      <AlertDialog open={open} onOpenChange={setOpen}>
+        <AlertDialog.Trigger asChild>
+          <TButton fontWeight={'400'}>打开</TButton>
+        </AlertDialog.Trigger>
+        <AlertDialog.Portal>
+          <AlertDialog.Content
+            bordered
+            elevate
+            key="content"
+            animation={[
+              'quick',
+              {
+                opacity: {
+                  overshootClamping: true,
+                },
+              },
+            ]}
+            enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
+            exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
+            x={0}
+            scale={1}
+            opacity={1}
+            y={0}
+          >
+            <YStack gap="$3">
+              <AlertDialog.Title fontWeight={400}>Accept</AlertDialog.Title>
+              <AlertDialog.Description fontWeight={400}>This is ant</AlertDialog.Description>
+              <XStack gap="$3" justify="flex-end">
+                <AlertDialog.Cancel>
+                  <TButton onPress={() => setOpen(false)}>Cancel</TButton>
+                </AlertDialog.Cancel>
+                <AlertDialog.Action>
+                  <TButton theme="accent">Accept</TButton>
+                </AlertDialog.Action>
+              </XStack>
+            </YStack>
+          </AlertDialog.Content>
+        </AlertDialog.Portal>
+      </AlertDialog>
+
       <View>
         <Text className="bg-red-300">{appStore.language}</Text>
+      </View>
+      <View>
+        <Text style={{ fontFamily: 'MiSans' }}>
+          {`文本撒打算大撒打算大撒打算大撒请问请问请问123456`}
+        </Text>
+      </View>
+      <View>
+        <Text>{`文本撒打算大撒打算大撒打算大撒请问请问请问123456`}</Text>
+      </View>
+      <View>
+        <Text
+          style={{
+            fontWeight: '900',
+          }}
+        >{`文本撒打算大撒打算大撒打算大撒请问请问请问123456`}</Text>
       </View>
       <Button title="ShopifyHomeData" onPress={handleClick} />
       <Button title="获取产品" onPress={getProductList} />

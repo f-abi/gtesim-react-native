@@ -1,14 +1,14 @@
-import { Image } from 'expo-image';
 import Constants from 'expo-constants';
 import { shopifyClient } from '@/utils/shopifyClient';
 import React, { useEffect, useState } from 'react';
 import { GetCollectionsQuery } from '@/types/storefront.generated';
-import { RefreshControl, Text, View, StyleSheet, Appearance } from 'react-native';
+import { RefreshControl, StyleSheet, Appearance } from 'react-native';
 import { FlashList } from '@shopify/flash-list';
 import { BlurView } from 'expo-blur';
 import { Colors } from '@/constants/Colors';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { View, Text, H5, Card, Image, AlertDialog, YStack, XStack, Button } from 'tamagui';
 
 type ListData = GetCollectionsQuery['collections']['edges'];
 
@@ -77,13 +77,13 @@ export default function HomeScreen() {
         ]}
       >
         <View
-          className="flex-1 items-center justify-center"
-          style={{
-            height: headerHeight,
-            paddingTop: Constants.statusBarHeight,
-          }}
+          height={headerHeight}
+          pt={Constants.statusBarHeight}
+          flex={1}
+          items="center"
+          justify="center"
         >
-          <Text className="text-2xl font-semibold dark:text-white">GTESIM</Text>
+          <Text fontSize={'$8'}>123456</Text>
         </View>
       </BlurView>
       <FlashList
@@ -106,19 +106,17 @@ export default function HomeScreen() {
           bottom: tabBarHeight - insets.bottom,
         }}
         renderItem={({ item }) => (
-          <View className="px-4 py-2">
-            <View className="flex-row items-center justify-between rounded-[12] bg-white p-4 ">
-              <View className="flex-row items-center">
-                <Image
-                  source={item.node.image?.url}
-                  style={{ width: 40, height: 40, borderRadius: 8 }}
-                />
-                <Text className="ml-2 text-base dark:text-white">{item.node.title}</Text>
+          <View px={16} pt={10}>
+            <Card size="$4" elevate alignItems="center" p={8}>
+              <View width={'100%'} flexDirection={'row'} items={'center'} justify={'space-between'}>
+                <View>
+                  <Image src={item.node.image?.url} width={40} height={40} rounded={8}></Image>
+                </View>
+                <View>
+                  <Text>123456</Text>
+                </View>
               </View>
-              <View>
-                <Text>LIcon</Text>
-              </View>
-            </View>
+            </Card>
           </View>
         )}
       />

@@ -10,12 +10,23 @@ import { useAppStore } from '@/stores/appStore';
 import { useEffect, useRef } from 'react';
 
 import 'react-native-url-polyfill/auto';
+import { TamaguiProvider } from 'tamagui';
+import TamaguiConfig from '@/tamagui.config';
 
 export default function RootLayout() {
   const colorScheme = useColorScheme();
   const appStore = useRef(useAppStore()).current;
   const [loaded] = useFonts({
-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),
+    'MiSans-Bold': require('@/assets/fonts/MiSans-Bold.otf'),
+    'MiSans-Demibold': require('@/assets/fonts/MiSans-Demibold.otf'),
+    'MiSans-ExtraLight': require('@/assets/fonts/MiSans-ExtraLight.otf'),
+    'MiSans-Heavy': require('@/assets/fonts/MiSans-Heavy.otf'),
+    'MiSans-Light': require('@/assets/fonts/MiSans-Light.otf'),
+    'MiSans-Medium': require('@/assets/fonts/MiSans-Medium.otf'),
+    'MiSans-Normal': require('@/assets/fonts/MiSans-Normal.otf'),
+    'MiSans-Regular': require('@/assets/fonts/MiSans-Regular.otf'),
+    'MiSans-Semibold': require('@/assets/fonts/MiSans-Semibold.otf'),
+    'MiSans-Thin': require('@/assets/fonts/MiSans-Thin.otf'),
   });
 
   useEffect(() => {
@@ -28,12 +39,14 @@ export default function RootLayout() {
   }
 
   return (
-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen name="+not-found" />
-      </Stack>
-      <StatusBar style="auto" />
-    </ThemeProvider>
+    <TamaguiProvider config={TamaguiConfig} defaultTheme={colorScheme!}>
+      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+        <Stack>
+          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+          <Stack.Screen name="+not-found" />
+        </Stack>
+        <StatusBar style="auto" />
+      </ThemeProvider>
+    </TamaguiProvider>
   );
 }

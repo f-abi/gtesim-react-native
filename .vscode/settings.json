@@ -1,4 +1,5 @@
 {
+  "nandorojo-tamagui.configPath": "../.tamagui/tamagui.config.json",
   "tailwindCSS.classAttributes": ["class", "className", "headerClassName"],
   "i18n-ally.localesPaths": ["locales/langs"],
   "i18n-ally.enabledParsers": ["json"],
@@ -102,7 +103,8 @@
     "paperplane",
     "Pressable",
     "qrcode",
-    "simcard"
+    "simcard",
+    "tamagui"
   ],
   "i18n-ally.keystyle": "nested"
 }

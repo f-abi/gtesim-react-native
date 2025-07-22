@@ -8,6 +8,8 @@ import TabBarBackground from '@/components/ui/TabBarBackground';
 import { Colors } from '@/constants/Colors';
 import { useColorScheme } from '@/hooks/useColorScheme';
 
+import { Cpu, ShoppingBag, CircleUserRound } from '@tamagui/lucide-icons';
+
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
@@ -23,27 +25,30 @@ export default function TabLayout() {
             position: 'absolute',
           },
         }),
+        tabBarLabelStyle: {
+          fontFamily: 'MiSans',
+        },
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
           title: 'Index',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
+          tabBarIcon: ({ color }) => <ShoppingBag size={24} color={color as any} />,
         }}
       />
       <Tabs.Screen
         name="home"
         options={{
           title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="simcard.fill" color={color} />,
+          tabBarIcon: ({ color }) => <Cpu size={24} color={color as any} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
+          tabBarIcon: ({ color }) => <CircleUserRound size={24} color={color as any} />,
         }}
       />
     </Tabs>
