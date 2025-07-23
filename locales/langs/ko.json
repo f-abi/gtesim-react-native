@@ -1,13 +1,9 @@
 {
   "auth": {
-    "login": "韩语",
-    "register": "韩语",
-    "codeLogin": "韩语",
-    "qrcodeLogin": "韩语",
-    "forgetPassword": "韩语"
-  },
-  "home": {
-    "title": "韩语",
-    "analytics": "韩语"
+    "codeLogin": "확인 코드 로그인",
+    "forgetPassword": "QR 코드 로그인",
+    "logIn": "로그인하십시오",
+    "logOut": "그만두다",
+    "signUp": "등록하다"
   }
 }

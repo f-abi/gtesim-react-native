@@ -1,6 +1,14 @@
 {
   "nandorojo-tamagui.configPath": "../.tamagui/tamagui.config.json",
   "tailwindCSS.classAttributes": ["class", "className", "headerClassName"],
+  // 百度翻译 apiSecret
+  "i18n-ally.translate.baidu.apiSecret": "oBgaakZwK3adLdJpC4EW",
+  // 百度翻译 appid
+  "i18n-ally.translate.baidu.appid": "20250723002413543",
+  // 指定百度平台
+  "i18n-ally.localeCountryMap": {
+    "ko": "kor"
+  },
   "i18n-ally.localesPaths": ["locales/langs"],
   "i18n-ally.enabledParsers": ["json"],
   "i18n-ally.sourceLanguage": "zh",

@@ -1,13 +1,9 @@
 {
   "auth": {
-    "login": "Login",
-    "register": "Register",
+    "logIn": "Log In",
+    "signUp": "Sign Up",
     "codeLogin": "Code Login",
-    "qrcodeLogin": "Qr Code Login",
-    "forgetPassword": "Forget Password"
-  },
-  "home": {
-    "title": "Home",
-    "analytics": "Analytics"
+    "forgetPassword": "Forget Password",
+    "logOut": "Log Out"
   }
 }

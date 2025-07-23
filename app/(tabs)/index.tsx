@@ -91,46 +91,7 @@ export default function HomeScreen() {
         />
       }
     >
-      <AlertDialog open={open} onOpenChange={setOpen}>
-        <AlertDialog.Trigger asChild>
-          <TButton fontWeight={'400'}>打开</TButton>
-        </AlertDialog.Trigger>
-        <AlertDialog.Portal>
-          <AlertDialog.Content
-            bordered
-            elevate
-            key="content"
-            animation={[
-              'quick',
-              {
-                opacity: {
-                  overshootClamping: true,
-                },
-              },
-            ]}
-            enterStyle={{ x: 0, y: -20, opacity: 0, scale: 0.9 }}
-            exitStyle={{ x: 0, y: 10, opacity: 0, scale: 0.95 }}
-            x={0}
-            scale={1}
-            opacity={1}
-            y={0}
-          >
-            <YStack gap="$3">
-              <AlertDialog.Title fontWeight={400}>Accept</AlertDialog.Title>
-              <AlertDialog.Description fontWeight={400}>This is ant</AlertDialog.Description>
-              <XStack gap="$3" justify="flex-end">
-                <AlertDialog.Cancel>
-                  <TButton onPress={() => setOpen(false)}>Cancel</TButton>
-                </AlertDialog.Cancel>
-                <AlertDialog.Action>
-                  <TButton theme="accent">Accept</TButton>
-                </AlertDialog.Action>
-              </XStack>
-            </YStack>
-          </AlertDialog.Content>
-        </AlertDialog.Portal>
-      </AlertDialog>
-
+      <TButton theme="accent">登录</TButton>
       <View>
         <Text className="bg-red-300">{appStore.language}</Text>
       </View>

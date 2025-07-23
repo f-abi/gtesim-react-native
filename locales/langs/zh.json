@@ -1,13 +1,9 @@
 {
   "auth": {
-    "login": "登录",
-    "register": "注册",
+    "logIn": "登录",
+    "signUp": "注册",
     "codeLogin": "验证码登录",
-    "qrcodeLogin": "二维码登录",
-    "forgetPassword": "忘记密码"
-  },
-  "home": {
-    "title": "首页",
-    "analytics": "概览"
+    "forgetPassword": "二维码登录",
+    "logOut": "退出"
   }
 }
