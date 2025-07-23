@@ -6,11 +6,11 @@ export const tamaguiConfig = createTamagui({
   fonts: {
     heading: createFont({
       ...defaultConfig.fonts.heading,
-      family: 'MiSans',
+      // family: 'MiSans',
     }),
     body: createFont({
       ...defaultConfig.fonts.body,
-      family: 'MiSans',
+      // family: 'MiSans',
     }),
   },
 });

@@ -1,7 +1,7 @@
 {
   "auth": {
-    "logIn": "登录",
-    "signUp": "注册",
+    "logIn": "登陆",
+    "signUp": "注册账号",
     "codeLogin": "验证码登录",
     "forgetPassword": "二维码登录",
     "logOut": "退出"

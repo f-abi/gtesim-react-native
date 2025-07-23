@@ -1,5 +1,5 @@
 import { Image } from 'expo-image';
-import { View, Text, Button, Appearance } from 'react-native';
+import { View, Text, Button, Appearance, StyleSheet } from 'react-native';
 
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useAppStore } from '@/stores/appStore';
@@ -9,10 +9,15 @@ import { i18n } from '@/utils/i18n';
 import { shopifyClient } from '@/utils/shopifyClient';
 import { AlertDialog, XStack, YStack, Button as TButton } from 'tamagui';
 import { useState } from 'react';
+import { useRouter } from 'expo-router';
+
+import PagerView from 'react-native-pager-view';
 
 export default function HomeScreen() {
   const [open, setOpen] = useState(false);
   const appStore = useAppStore();
+
+  const router = useRouter();
 
   const getProductList = async () => {
     try {
@@ -91,7 +96,14 @@ export default function HomeScreen() {
         />
       }
     >
-      <TButton theme="accent">登录</TButton>
+      <TButton
+        fontSize={'$4'}
+        onPress={() => {
+          router.push('/auth');
+        }}
+      >
+        登录
+      </TButton>
       <View>
         <Text className="bg-red-300">{appStore.language}</Text>
       </View>
