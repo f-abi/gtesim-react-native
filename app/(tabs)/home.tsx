@@ -8,7 +8,8 @@ import { BlurView } from 'expo-blur';
 import { Colors } from '@/constants/Colors';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { View, Text, H5, Card, Image, AlertDialog, YStack, XStack, Button } from 'tamagui';
+import { View, Text, Card } from 'tamagui';
+import { Image } from 'expo-image';
 
 type ListData = GetCollectionsQuery['collections']['edges'];
 
@@ -108,9 +109,22 @@ export default function HomeScreen() {
         renderItem={({ item }) => (
           <View px={16} pt={10}>
             <Card size="$4" elevate alignItems="center" p={8}>
-              <View width={'100%'} flexDirection={'row'} items={'center'} justify={'space-between'}>
+              <View
+                width={'100%'}
+                flexDirection={'row'}
+                items={'center'}
+                justify={'space-between'}
+                rounded={4}
+              >
                 <View>
-                  <Image src={item.node.image?.url} width={40} height={40} rounded={8}></Image>
+                  <Image
+                    source={{
+                      uri: item.node.image?.url,
+                    }}
+                    style={{ height: 40, width: 40, borderRadius: 8 }}
+                    contentFit="cover"
+                    transition={300}
+                  />
                 </View>
                 <View>
                   <Text>123456</Text>
